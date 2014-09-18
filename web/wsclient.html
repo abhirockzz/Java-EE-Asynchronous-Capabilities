@@ -1,0 +1,59 @@
+<!DOCTYPE html>  
+
+<meta charset="utf-8" />  
+
+<title>Monitoring Dashboard</title>  
+
+<h2>Click to initiate monitoring</h2> 
+
+<input onclick="testWebSocket()" value="Start" type="button">
+
+<script language="javascript" type="text/javascript"> 
+
+var wsUri = "ws://localhost:8080/BlogJavaEE7AsyncCapabilities/ws/async";
+var output;
+
+function init() { 
+output = document.getElementById("output"); 
+
+}
+
+function testWebSocket() { 
+websocket = new WebSocket(wsUri); 
+websocket.onopen = function(evt) { onOpen(evt) };
+websocket.onclose = function(evt) { onClose(evt) }; 
+websocket.onmessage = function(evt) { onMessage(evt) }; 
+}
+
+
+function onOpen(evt) {
+     if (evt.data != null && evt.data !== undefined) {
+       writeToScreen('<span style="color: green;">' + evt.data+'</span>');
+    }
+ 
+ }
+
+ function onClose(evt) { 
+writeToScreen('<span style="color: red;">' + evt.data+'</span>'); 
+ }
+
+ function onMessage(evt) { 
+ writeToScreen('<span style="color: blue;">' + evt.data+'</span>'); 
+ }
+
+ function writeToScreen(message) { 
+ var pre = document.createElement("p");
+ pre.style.wordWrap = "break-word"; 
+ pre.innerHTML = message;
+ output.appendChild(pre); 
+ }
+
+ window.addEventListener("load", init, false); 
+ 
+ </script>  
+ 
+ 
+ 
+ <div id="output"></div> 
+ 
+ </html>
