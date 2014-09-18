@@ -3,7 +3,7 @@ Java EE Asynchronous Capabilities
 
 Java EE has a number of APIs and constructs to support Asynchronous execution.
 
-Let’s take a look at few of the Async related features (APIs) in Java EE and explore the below Java EE specifications
+Let’s take a look at few of the Async related features (APIs) in Java EE and explore the below specifications
 
 - JAX-RS 2.0 (Java EE 7)
 - Websocket 1.0 (Java EE 7)
